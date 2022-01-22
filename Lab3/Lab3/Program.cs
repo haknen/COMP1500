@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Lab3
 {
@@ -6,7 +7,14 @@ namespace Lab3
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            using (StreamReader READER = new StreamReader(Console.OpenStandardInput()))
+            {
+                double totalCost = RestaurantBillCalculator.CalculateTotalCost(READER);
+
+                double individualCost = RestaurantBillCalculator.CalculateIndividualCost(READER, totalCost);
+                
+                uint payerCount = RestaurantBillCalculator.CalculatePayerCount(READER, totalCost);
+            }
         }
     }
 }
