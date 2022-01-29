@@ -13,7 +13,7 @@
             {
                 if (year % 100 == 0)
                 {
-                    if(year % 400 == 0)
+                    if (year % 400 == 0)
                     {
                         return true;
                     }
@@ -31,16 +31,16 @@
 
         public static int GetDaysInMonth(uint year, uint month)
         {
-            if(year >= 9999 || month < 1 || month > 12)
+            if (year > 9999 || month < 1 || month > 12)
             {
                 return -1;
             }
 
             else
             {
-                if(month == 2)
+                if (month == 2)
                 {
-                    if(IsLeapYear(year))
+                    if (IsLeapYear(year))
                     {
                         return LEAP_FEBRUARY;
                     }
@@ -49,7 +49,7 @@
                         return FEBRUARY;
                     }
                 }
-                else if(month == 4 || month == 6 || month == 9 || month == 11)
+                else if (month == 4 || month == 6 || month == 9 || month == 11)
                 {
                     return SHORT_MONTH;
                 }
