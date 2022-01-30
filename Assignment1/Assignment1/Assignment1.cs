@@ -24,11 +24,11 @@ namespace Assignment1
             int int5 = int.Parse(num5);
 
             output.WriteLine($"{"oct".PadLeft(width)} {"dec".PadLeft(width)} {"hex".PadLeft(width)}");
-            output.WriteLine($"{Convert.ToString(int1, 8).PadLeft(width)} {num1.PadLeft(width)} {Convert.ToString(int1, 16).PadLeft(width)}");
-            output.WriteLine($"{Convert.ToString(int2, 8).PadLeft(width)} {num2.PadLeft(width)} {Convert.ToString(int2, 16).PadLeft(width)}");
-            output.WriteLine($"{Convert.ToString(int3, 8).PadLeft(width)} {num3.PadLeft(width)} {Convert.ToString(int3, 16).PadLeft(width)}");
-            output.WriteLine($"{Convert.ToString(int4, 8).PadLeft(width)} {num4.PadLeft(width)} {Convert.ToString(int4, 16).PadLeft(width)}");
-            output.WriteLine($"{Convert.ToString(int5, 8).PadLeft(width)} {num5.PadLeft(width)} {Convert.ToString(int5, 16).PadLeft(width)}");
+            output.WriteLine($"{Convert.ToString(int1, 8).PadLeft(width)} {num1.PadLeft(width)} {Convert.ToString(int1, 16).ToUpper().PadLeft(width)}");
+            output.WriteLine($"{Convert.ToString(int2, 8).PadLeft(width)} {num2.PadLeft(width)} {Convert.ToString(int2, 16).ToUpper().PadLeft(width)}");
+            output.WriteLine($"{Convert.ToString(int3, 8).PadLeft(width)} {num3.PadLeft(width)} {Convert.ToString(int3, 16).ToUpper().PadLeft(width)}");
+            output.WriteLine($"{Convert.ToString(int4, 8).PadLeft(width)} {num4.PadLeft(width)} {Convert.ToString(int4, 16).ToUpper().PadLeft(width)}");
+            output.WriteLine($"{Convert.ToString(int5, 8).PadLeft(width)} {num5.PadLeft(width)} {Convert.ToString(int5, 16).ToUpper().PadLeft(width)}");
         }
 
         public static void PrintStats(StreamReader input, StreamWriter output)
