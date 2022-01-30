@@ -13,15 +13,15 @@ namespace Assignment1
             }
 
             string num1 = input.ReadLine().Trim();
-            int int1 = int.Parse(num1);
+            long int1 = long.Parse(num1);
             string num2 = input.ReadLine().Trim();
-            int int2 = int.Parse(num2);
+            long int2 = long.Parse(num2);
             string num3 = input.ReadLine().Trim();
-            int int3 = int.Parse(num3);
+            long int3 = long.Parse(num3);
             string num4 = input.ReadLine().Trim();
-            int int4 = int.Parse(num4);
+            long int4 = long.Parse(num4);
             string num5 = input.ReadLine().Trim();
-            int int5 = int.Parse(num5);
+            long int5 = long.Parse(num5);
 
             output.WriteLine($"{"oct".PadLeft(width)} {"dec".PadLeft(width)} {"hex".PadLeft(width)}");
             output.WriteLine($"{Convert.ToString(int1, 8).PadLeft(width)} {num1.PadLeft(width)} {Convert.ToString(int1, 16).ToUpper().PadLeft(width)}");
