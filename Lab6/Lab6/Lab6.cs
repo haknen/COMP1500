@@ -42,7 +42,7 @@ namespace Lab6
                     {
                         for (int j = 0; j < dataLength; j++)
                         {
-                            data[i, dataLength - j - 1] = temp[i,j];
+                            data[i, dataLength - j - 1] = temp[i, j];
                         }
                     }
                     break;
