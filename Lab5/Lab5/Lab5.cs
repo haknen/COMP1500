@@ -82,10 +82,7 @@ namespace Lab5
                 return fixCount;
             }
 
-            else
-            {
-                return -1;
-            }
+            return -1;
         }
 
         public static double CalculateTotalRevenue(double[] revenuePerDay, uint start, uint end)
