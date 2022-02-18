@@ -76,13 +76,12 @@ namespace Assignment2
                         {
                             return wrongShape;
                         }
-                        uint center = width / 2;
 
                         for (int i = 0; i < height; i++)
                         {
                             for (int j = 0; j < width; j++)
                             {
-                                if (i + 4 >= j && i + j >= height - 1)
+                                if (i + height - 1 >= j && i + j >= height - 1)
                                 {
                                     result[i + 2, j + 2] = '*';
                                 }
@@ -134,6 +133,11 @@ namespace Assignment2
             int shapeHeight = canvas.GetLength(0) - 3;
             int shapeWidth = canvas.GetLength(1) - 3;
             uint shapeCheck = 0;
+
+            if (canvas.GetLength(0) == 0 || canvas.GetLength(1) == 0)
+            {
+                return false;
+            }
 
             if (canvas[shapeHeight, shapeWidth] != '*')
             {
