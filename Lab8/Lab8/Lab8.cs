@@ -14,22 +14,22 @@ namespace Lab8
 
             StringBuilder builder = new StringBuilder(s.Length * 2);
 
-            bool isLevel2Able = true;
-            bool isLevel3Able = false;
+            bool bLevel2Able = true;
+            bool bLevel3Able = false;
             int countLv1 = 1;
             int countLv2 = 0;
 
             builder.Append("1) ");
             for (int i = 0; i < s.Length; i++)
             {
-                if (s[i] == '/' && isLevel3Able)
+                if (s[i] == '/' && bLevel3Able)
                 {
                     builder.Append("\n        - ");
                 }
 
-                else if (s[i] == '_' && isLevel2Able)
+                else if (s[i] == '_' && bLevel2Able)
                 {
-                    isLevel3Able = true;
+                    bLevel3Able = true;
                     builder.Append("\n    ");
                     for (int j = 0; j < countLv2 / 26 + 1; j++)
                     {
@@ -41,8 +41,8 @@ namespace Lab8
 
                 else if (s[i] == '|')
                 {
-                    isLevel2Able = true;
-                    isLevel3Able = false;
+                    bLevel2Able = true;
+                    bLevel3Able = false;
                     countLv1++;
                     builder.Append("\n" + countLv1);
                     builder.Append(") ");
