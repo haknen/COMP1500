@@ -16,12 +16,12 @@ namespace Lab9
 
             if (sortedList1 == null)
             {
-                return sortedList2;
+                sortedList1 = new List<int>();
             }
 
             if (sortedList2 == null)
             {
-                return sortedList1;
+                sortedList2 = new List<int>();
             }
 
             int i = 0;
