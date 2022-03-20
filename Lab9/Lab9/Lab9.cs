@@ -43,18 +43,22 @@ namespace Lab9
                 }
             }
 
-            if (sortedList1.Count >= sortedList2.Count)
+            if (i + j == sortedList1.Count + sortedList2.Count)
             {
-                for (; i < sortedList1.Count; i++)
-                {
-                    combinedList.Add(sortedList1[i]);
-                }
+                return combinedList;
             }
-            else
+            else if (i >= sortedList1.Count)
             {
                 for (; j < sortedList2.Count; j++)
                 {
                     combinedList.Add(sortedList2[j]);
+                }
+            }
+            else
+            {
+                for (; i < sortedList1.Count; i++)
+                {
+                    combinedList.Add(sortedList1[i]);
                 }
             }
 
