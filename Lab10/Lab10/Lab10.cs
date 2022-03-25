@@ -4,8 +4,8 @@ namespace Lab10
 {
     public class Rectangle
     {
-        public uint Width { get; set; }
-        public uint Height { get; set; }
+        public uint Width { get; private set; }
+        public uint Height { get; private set; }
 
         public Rectangle(uint width, uint height)
         {
@@ -27,20 +27,20 @@ namespace Lab10
 
     public class RightTriangle
     {
-        private double thirdSide;
-        public uint Width { get; set; }
-        public uint Height { get; set; }
+        private double mThirdSide;
+        public uint Width { get; private set; }
+        public uint Height { get; private set; }
 
         public RightTriangle(uint width, uint height)
         {
             Width = width;
             Height = height;
-            thirdSide = Math.Sqrt(Math.Pow((double)width, 2) + Math.Pow((double)height, 2));
+            mThirdSide = Math.Sqrt(Math.Pow((double)width, 2) + Math.Pow((double)height, 2));
         }
 
         public double GetPerimeter()
         {
-            return Math.Round((double)Width + (double)Height + thirdSide, 3);
+            return Math.Round((double)Width + (double)Height + mThirdSide, 3);
         }
 
         public double GetArea()
@@ -51,8 +51,8 @@ namespace Lab10
 
     public class Circle
     {
-        public uint Radius { get; set; }
-        public uint Diameter { get; set; }
+        public uint Radius { get; private set; }
+        public uint Diameter { get; private set; }
 
 
         public Circle(uint radius)
