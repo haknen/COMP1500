@@ -16,33 +16,33 @@ namespace Lab11
             using (var writer = new BinaryWriter(output))
             {
                 byte count = 1;
-                int data = reader.Read();
-                int compare;
+                byte data = (byte)reader.Read();
+                byte compare;
 
                 for (int i = 1; i < input.Length; i++)
                 {
-                    compare = reader.Read();
+                    compare = (byte)reader.Read();
                     if (data == compare)
                     {
-                        count++;
                         if (count > 254)
                         {
                             writer.Write(count);
-                            writer.Write((byte)data);
+                            writer.Write(data);
                             count = 0;
                         }
+                        count++;
                     }
                     else
                     {
                         writer.Write(count);
-                        writer.Write((byte)data);
+                        writer.Write(data);
                         count = 1;
                     }
                     data = compare;
                 }
 
                 writer.Write(count);
-                writer.Write((byte)data);
+                writer.Write(data);
             }
 
             return true;
