@@ -26,7 +26,7 @@ namespace Assignment4
             {
                 return mHealth;
             }
-            set
+            private set
             {
                 mHealth = value < 0 ? 0 : value;
             }
@@ -37,7 +37,7 @@ namespace Assignment4
             {
                 return mAttack;
             }
-            set
+            private set
             {
                 mAttack = value < 0 ? 0 : value;
             }
@@ -48,7 +48,7 @@ namespace Assignment4
             {
                 return mDefense;
             }
-            set
+            private set
             {
                 mDefense = value < 0 ? 0 : value;
             }
@@ -167,7 +167,7 @@ namespace Assignment4
         public string ArenaName { get; private set; }
         public uint Turns { get; private set; }
         public uint MonsterCount { get; private set; }
-        private List<Monster> MonsterArena = new List<Monster>();
+        private List<Monster> mMonsterArena = new List<Monster>();
 
         public Arena(string arenaName, uint capacity)
         {
@@ -177,8 +177,18 @@ namespace Assignment4
 
         public void LoadMonsters(string filePath)
         {
-            char[] delimiters = { ',', '\n' };
+            if (!File.Exists(filePath))
+            {
+                return;
+            }
+
             string monsters = File.ReadAllText(filePath);
+            if (String.IsNullOrWhiteSpace(monsters))
+            {
+                return;
+            }
+
+            char[] delimiters = { ',', '\n' };
             string[] data = monsters.Split(delimiters);
             int count = 0;
             for (int i = 0; i < data.Length; i++)
@@ -194,35 +204,36 @@ namespace Assignment4
                 int health = Int32.Parse(data[i++]);
                 int attack = Int32.Parse(data[i++]);
                 int defense = Int32.Parse(data[i]);
-                MonsterArena.Add(new Monster(name, type, health, attack, defense));
+                mMonsterArena.Add(new Monster(name, type, health, attack, defense));
             }
             MonsterCount = (uint)count;
         }
 
         public void GoToNextTurn()
         {
-            for (int i = 0; i < MonsterArena.Count; i++)
+            for (int i = 0; i < mMonsterArena.Count; i++)
             {
-                if (MonsterArena.Count <= 1)
+                if (mMonsterArena.Count <= 1)
                 {
+                    Turns++;
                     return;
                 }
-                else if (i == MonsterArena.Count - 1)
+                else if (i == mMonsterArena.Count - 1)
                 {
-                    MonsterArena[i].Attack(MonsterArena[0]);
-                    if (MonsterArena[0].Health <= 0)
+                    mMonsterArena[i].Attack(mMonsterArena[0]);
+                    if (mMonsterArena[0].Health <= 0)
                     {
-                        MonsterArena.RemoveAt(0);
+                        mMonsterArena.RemoveAt(0);
                         MonsterCount--;
                     }
                     Turns++;
                 }
                 else
                 {
-                    MonsterArena[i].Attack(MonsterArena[i + 1]);
-                    if (MonsterArena[i + 1].Health <= 0)
+                    mMonsterArena[i].Attack(mMonsterArena[i + 1]);
+                    if (mMonsterArena[i + 1].Health <= 0)
                     {
-                        MonsterArena.RemoveAt(i + 1);
+                        mMonsterArena.RemoveAt(i + 1);
                         MonsterCount--;
                     }
                 }
@@ -231,18 +242,18 @@ namespace Assignment4
 
         public Monster GetHealthiestOrNull()
         {
-            if (MonsterArena.Count < 1)
+            if (mMonsterArena.Count < 1)
             {
                 return null;
             }
 
             int index = 0;
-            for (int i = 1; i < MonsterArena.Count; i++)
+            for (int i = 1; i < mMonsterArena.Count; i++)
             {
-                index = MonsterArena[i].Health > MonsterArena[index].Health ? i : index;
+                index = mMonsterArena[i].Health > mMonsterArena[index].Health ? i : index;
             }
 
-            return MonsterArena[index];
+            return mMonsterArena[index];
         }
     }
 }
