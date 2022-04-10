@@ -190,13 +190,10 @@ namespace Assignment4
 
             char[] delimiters = { ',', '\n' };
             string[] data = monsters.Split(delimiters);
-            int count = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                count++;
-                if (count > Capacity)
+                if (mMonsterArena.Count > Capacity)
                 {
-                    count--;
                     break;
                 }
                 string name = data[i++];
@@ -206,19 +203,20 @@ namespace Assignment4
                 int defense = Int32.Parse(data[i]);
                 mMonsterArena.Add(new Monster(name, type, health, attack, defense));
             }
-            MonsterCount = (uint)count;
+            MonsterCount = (uint)mMonsterArena.Count;
         }
 
         public void GoToNextTurn()
         {
+            if (mMonsterArena.Count <= 1)
+            {
+                Turns++;
+                return;
+            }
+
             for (int i = 0; i < mMonsterArena.Count; i++)
             {
-                if (mMonsterArena.Count <= 1)
-                {
-                    Turns++;
-                    return;
-                }
-                else if (i == mMonsterArena.Count - 1)
+                if (i == mMonsterArena.Count - 1)
                 {
                     mMonsterArena[i].Attack(mMonsterArena[0]);
                     if (mMonsterArena[0].Health <= 0)
@@ -226,7 +224,6 @@ namespace Assignment4
                         mMonsterArena.RemoveAt(0);
                         MonsterCount--;
                     }
-                    Turns++;
                 }
                 else
                 {
@@ -238,6 +235,7 @@ namespace Assignment4
                     }
                 }
             }
+            Turns++;
         }
 
         public Monster GetHealthiestOrNull()
