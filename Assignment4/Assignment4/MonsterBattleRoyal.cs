@@ -190,10 +190,13 @@ namespace Assignment4
 
             char[] delimiters = { ',', '\n' };
             string[] data = monsters.Split(delimiters);
+            int count = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (mMonsterArena.Count > Capacity)
+                count++;
+                if (count > Capacity)
                 {
+                    count--;
                     break;
                 }
                 string name = data[i++];
@@ -203,18 +206,17 @@ namespace Assignment4
                 int defense = Int32.Parse(data[i]);
                 mMonsterArena.Add(new Monster(name, type, health, attack, defense));
             }
-            MonsterCount = (uint)mMonsterArena.Count;
+            MonsterCount = (uint)count;
         }
 
         public void GoToNextTurn()
         {
-            if (mMonsterArena.Count <= 1)
+            if (MonsterCount <= 1)
             {
-                Turns++;
                 return;
             }
 
-            for (int i = 0; i < mMonsterArena.Count; i++)
+            for (int i = 0; i < MonsterCount; i++)
             {
                 if (i == mMonsterArena.Count - 1)
                 {
